@@ -7,12 +7,9 @@ public abstract class Compte implements CompteStat {
 	private double solde;
 	
 	public Compte() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Compte(String numero, String intitule, double solde) {
-		// TODO Auto-generated constructor stub
-
 		if(solde<0){
 			System.out.println("On ne peut pas initialiser un compte en négatif.");
 			solde=0;
@@ -33,29 +30,42 @@ public abstract class Compte implements CompteStat {
 		this.solde+=montant;
 		return this.solde;
 	}
-	public double debiter(double montant) {
+	public double debiter(double montant) throws DebitException {
+		
+		double debitmax=debitMax();
+		
+		if(montant > debitmax){
+			throw new DebitException("Erreur, solde insuffisant. Débit max autorisé : "+debitmax);
+		}
+		
 		this.solde-=montant;
 		return this.solde;
 	}
-	
-	// Accesseurs
-	
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+
 	public String getNumero() {
 		return numero;
 	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
 	public String getIntitule() {
 		return intitule;
 	}
+
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
 	}
+
 	public double getSolde() {
 		return solde;
 	}
+
 	public void setSolde(double solde) {
 		this.solde = solde;
 	}
+	
+	abstract double debitMax();
+	
 }

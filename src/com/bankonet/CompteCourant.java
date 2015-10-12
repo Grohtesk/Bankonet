@@ -2,7 +2,7 @@ package com.bankonet;
 
 public class CompteCourant extends Compte {
 	
-	double montantDecouvertAutorise;	
+	double montantDecouvertAutorise;
 	
 	public CompteCourant(){
 	}
@@ -20,6 +20,13 @@ public class CompteCourant extends Compte {
 		String str=super.toString();
 		str+="Montant devouvert autorisé : "+this.montantDecouvertAutorise;
 		return str;
-	}	
+	}
+
+	@Override
+	double debitMax() {
+		return this.getSolde()+montantDecouvertAutorise;
+	}
+	
+	
 	
 }

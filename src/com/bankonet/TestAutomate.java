@@ -13,5 +13,11 @@ public class TestAutomate {
 		}
 		System.out.println("Moyenne des comptes : "+(somme/i));
 		
+		try {
+			tableau[2].debiter(401);
+		} catch (DebitException e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 }

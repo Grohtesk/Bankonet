@@ -5,7 +5,6 @@ public class CompteEpargne extends Compte{
 	double tauxInteret;
 	
 	public CompteEpargne() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public CompteEpargne(String numero, String intitule, double solde,double tauxInteret) {
@@ -17,6 +16,12 @@ public class CompteEpargne extends Compte{
 		String str=super.toString();
 		str+="Taux intéret : "+this.tauxInteret;
 		return str;
+	}
+
+	@Override
+	double debitMax() {
+		// TODO Auto-generated method stub
+		return this.getSolde();
 	}	
 
 }
