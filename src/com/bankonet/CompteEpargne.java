@@ -2,20 +2,30 @@ package com.bankonet;
 
 public class CompteEpargne extends Compte{
 
-	double tauxInteret;
+	private double tauxInteret;
+	public static final double PLAFOND=12000d;
 	
 	public CompteEpargne() {
 	}
 	
-	public CompteEpargne(String numero, String intitule, double solde,double tauxInteret) {
+	public CompteEpargne(String numero, String intitule, double solde, double tauxInteret) {
 		super(numero,intitule,solde);
 		this.tauxInteret = tauxInteret;
 	}
 	
 	public String toString() {
 		String str=super.toString();
-		str+="Taux intéret : "+this.tauxInteret;
+		str+="; Plafond : "+this.PLAFOND+"; Taux intéret : "+this.tauxInteret;
 		return str;
+	}
+	
+	@Override
+	public double crediter(double montant) throws CreditException {
+		// TODO Auto-generated method stub
+		if(PLAFOND<this.getSolde()+montant){
+			throw new CreditException("Erreur, plafond dépassé. Solde max autorisé : "+this.PLAFOND);
+		}
+		return super.crediter(montant);
 	}
 
 	@Override

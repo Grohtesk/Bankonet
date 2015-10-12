@@ -26,7 +26,7 @@ public abstract class Compte implements CompteStat {
 		return str;
 	}
 	
-	public double crediter(double montant) {
+	public double crediter(double montant) throws CreditException{
 		this.solde+=montant;
 		return this.solde;
 	}
@@ -67,5 +67,10 @@ public abstract class Compte implements CompteStat {
 	}
 	
 	abstract double debitMax();
+	
+	public void effectuerVirement(Compte compte, double montant) throws CompteException {
+		compte.debiter(montant);
+		this.crediter(montant);
+	}
 	
 }

@@ -1,6 +1,6 @@
 package com.bankonet;
 
-public class DebitException extends Exception {
+public class DebitException extends CompteException {
 	
 	
 	public DebitException(String arg0, Throwable arg1) {

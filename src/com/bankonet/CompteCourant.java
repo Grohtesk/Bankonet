@@ -18,7 +18,7 @@ public class CompteCourant extends Compte {
 	
 	public String toString() {
 		String str=super.toString();
-		str+="Montant devouvert autorisé : "+this.montantDecouvertAutorise;
+		str+="; Montant devouvert autorisé : "+this.montantDecouvertAutorise;
 		return str;
 	}
 
