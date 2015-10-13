@@ -1,16 +1,15 @@
 package com.bankonet;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class Client {
+public class Client<E extends Compte> {
 	private String nom;
 	private String prenom;
 	private String identifiant;
-	private List<Compte> comptesList;
-	private HashMap<String, Compte> compteMap;
+//	private List<Compte> comptesList;
+	private HashMap<String, E> compteMap;
 	
 	
 	public Client(String nom, String prenom, String identifiant) {
@@ -18,7 +17,7 @@ public class Client {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.identifiant = identifiant;
-		this.comptesList=new ArrayList<Compte>();
+//		this.comptesList=new ArrayList<Compte>();
 		this.compteMap=new HashMap<>();
 	}
 
@@ -29,42 +28,42 @@ public class Client {
 	}
 	
 	
-	public double calculerAvoirGlobal(){
-		double avoir=0;
-		Iterator<Compte> iterator=comptesList.iterator();
-		while (iterator.hasNext()) {
-			Compte compte = (Compte) iterator.next();
-			avoir+=compte.getSolde();
-		}
-		return avoir;
+//	public double calculerAvoirGlobal(){
+//		double avoir=0;
+//		Iterator<Compte> iterator=comptesList.iterator();
+//		while (iterator.hasNext()) {
+//			Compte compte = (Compte) iterator.next();
+//			avoir+=compte.getSolde();
+//		}
+//		return avoir;
+//	}
+//	
+	
+	public HashMap<String,E> getComptes() {
+		
+		return this.compteMap;
+		
 	}
 	
-	
-	public List<Compte> getComptes() {
-		
-		return this.comptesList;
-		
-	}
-	
-	public void creerCompte(Compte compte) {
+	public void creerCompte(E compte) {
 		this.compteMap.put(compte.getNumero(), compte);
-		this.comptesList.add(compte);
+//		this.comptesList.add(compte);
 	}
 
-	public void supprimerCompte(Compte compte){
+	public void supprimerCompte(E compte){
 		this.compteMap.remove(compte.getNumero());
-		this.comptesList.remove(compte);
+//		this.comptesList.remove(compte);
 	}
 	
 	public void supprimerCompte(String numero) throws CompteNonTrouveException{
-		Compte compte=retournerCompte(numero);
-		this.comptesList.remove(compte);
+//		Compte compte=retournerCompte(numero);
+//		this.comptesList.remove(compte);
 		this.compteMap.remove(numero);
 	}
 	
-	public Compte retournerCompte(String numero) throws CompteNonTrouveException {
+	public E retournerCompte(String numero) throws CompteNonTrouveException {
 		if(this.compteMap.get(numero)!=null){
-			return (Compte)this.compteMap.get(numero);
+			return (E)this.compteMap.get(numero);
 		}else{
 			throw new CompteNonTrouveException("Compte non trouvé pour le n°"+numero);
 		}

@@ -32,8 +32,6 @@ public class TestClient {
 		
 		System.out.println(client);
 		
-		System.out.println("avoir global : "+client.calculerAvoirGlobal());
-		
 		try {
 			Compte compte=client.retournerCompte("1006235");
 			System.out.println("intitulé : "+compte.getIntitule());
