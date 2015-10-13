@@ -22,7 +22,7 @@ public class TestClient {
 		
 		System.out.println("Création de Client");
 		
-		Client client=new Client("Jean","Rober","2278");
+		Client client=new Client("Jean","Rober",Civilite.MADEMOISELLE,"2278");
 		client.creerCompte(new CompteCourant("100156235", "Axa banque", 1000d, 0d));
 		client.creerCompte(new CompteCourant("553351521", "Groupama", 1500d, 0d));
 		client.creerCompte(new CompteCourant("555285623", "BMP", 200d, 200d));
